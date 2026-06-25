@@ -73,15 +73,16 @@
         <h1>Aslı <span>Karataş</span></h1>
         <p class="subtitle">Yüksek başarı oranlı, istatistik tabanlı profesyonel spor ve maç analizleri. Kazanmaya bugün başlayın.</p>
         
-        <div class="counter">🟢 Bugün Katılan Üye Sayısı: 458 Kişi</div>
+        <!-- Üye Sayısı Alanı (ID eklendi) -->
+        <div class="counter">🟢 Bugün Katılan Üye Sayısı: <strong id="live-member-count">458</strong> Kişi</div>
         
         <!-- GERI SAYIM SAYAÇ ALANI -->
         <div class="countdown-box">
             ⏰ Günün VIP Kuponlarının Kapanmasına Son: <span id="timer">02:14:55</span>
         </div>
         
-        <!-- Sadece Instagram Butonu Kaldı -->
-        <a href="https://instagram.com/KENDI_KULLANICI_ADIN" target="_blank" class="btn btn-insta">📸 Instagram'dan Mesaj At</a>
+        <!-- Doğrudan DM Kutusuna Yönlendiren Instagram Butonu -->
+        <a href="https://ig.me/m/asli.resmi.tr" target="_blank" class="btn btn-insta">📸 Instagram'dan Mesaj At (DM)</a>
         
         <!-- Hesaplama ve Katılım Kutusu -->
         <div class="box">
@@ -112,7 +113,7 @@
         <!-- Bilgi Kutusu -->
         <div class="box">
             <h2 style="text-align:left;">🔥 Günün VIP Analizleri Hakkında Bilgi</h2>
-            <p style="color: #e2e8f0;">Bugün bültene özel özenle seçilmiş, güven oranı %95 olan 2 adet VIP kuponumuz hazırdır. Analizlerimiz tamamen Avrupa kaynaklı istatistiklere ve takım form durumlarına dayanmaktadır. Detaylı bilgi, oranlar ve katılım şartları için yukarıdaki butonu kullanarak doğrudan benimle iletişime geçebilirsiniz. Kontenjanlarımız her gün sınırlıdır!</p>
+            <p style="color: #e2e8f0;">İşlemlerimiz 19:00'da başlayıp 20:45'tamamlanmaktadır.Maçların dağılmaması ve paylaşılmaması için sizlerin yerine biz oynuyoruz. Kuponu size vermiyoruz. Maç sonunda oynanan maçları öğreniyorsunuz. Detaylı bilgi, oranlar ve katılım şartları için yukarıdaki butonu kullanarak doğrudan benimle iletişime geçebilirsiniz. Kontenjanlarımız her gün sınırlıdır!</p>
         </div>
         
         <!-- Yorumlar -->
@@ -126,13 +127,13 @@
         
         <div class="review">
             <div class="stars">⭐⭐⭐⭐⭐</div>
-            <p class="review-text">"Instagram üzerinden iletişime geçtim, VIP kuponunu aldım harika bir oranla geldi. Kesinlikle tavsiye ederim."</p>
+            <p class="review-text">"Instagram üzerinden iletişime geçtim, benim için oynadı ve banada kazandırdı. Kesinlikle tavsiye ederim."</p>
             <p class="user">Murat K. ✔️ Onaylı Üye</p>
         </div>
         
         <div class="review">
             <div class="stars">⭐⭐⭐⭐⭐</div>
-            <p class="review-text">"Öğrenciyim, borçlarım vardı. Aslı ablanın dün verdiği akşam kuponu sayesinde rahat bir nefes aldım. Kalitenin tek adresi."</p>
+            <p class="review-text">"Öğrenciyim, borçlarım vardı. Aslı ablanın sayesinde rahat bir nefes aldım.Banada kazandırdı. Kalitenin tek adresi."</p>
             <p class="user">Burak S. ✔️ Onaylı Üye</p>
         </div>
 
@@ -142,19 +143,19 @@
             <div style="margin-top: 15px;">
                 <div class="faq-item">
                     <div class="faq-question">Kuponların yatma ihtimali var mı?</div>
-                    <div class="faq-answer">Paylaşılan VIP analizler %95'in üzerinde istatistiksel başarı güvencesine sahiptir. Risk her zaman minimum düzeyde tutulur.</div>
+                    <div class="faq-answer">Kaybetme ihtimaliniz bulunmamaktadır. Bir sorun olmasın durumunda iadeniz eksiksiz yapılır.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">Kazanç sağladıktan sonra ek ücret talep ediyor musunuz?</div>
                     <div class="faq-answer">Hayır, kesinlikle komisyon, vergi veya dosya masrafı adı altında sonradan hiçbir ek ücret talep edilmez.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">Kuponları hangi sitelerden oynayabilirim?</div>
-                    <div class="faq-answer">Verilen maçlar tamamen yasal bülten maçları olup tüm yerli ve resmi bahis platformlarında mevcuttur.</div>
+                    <div class="faq-question">Kuponları siz mi oynuyorsunuz?</div>
+                    <div class="faq-answer">Evet maçların dağılmaması için biz oynuyoruz.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">Gruba katılım sağladıktan sonra kuponlar ne zaman iletilir?</div>
-                    <div class="faq-answer">Onayınız tamamlandığı an günün güncel VIP analizleri doğrudan Instagram mesaj yoluyla size teslim edilir.</div>
+                    <div class="faq-question">Kupona katılım sağladıktan sonra kuponlar ne zaman sonuçlanır?</div>
+                    <div class="faq-answer">19:00 son katılım saatidir.20:45 ten sonra kazancınızı sırayla transfer ediyoruz.</div>
                 </div>
             </div>
         </div>
@@ -192,7 +193,62 @@
     </div>
 
     <script>
-        // Hesaplama fonksiyonu
+        // --- REFRESH YAPTIKÇA ARTAN ÜYE SAYISI SİSTEMİ ---
+        var storageKeyMembers = 'asli_member_count';
+        var currentMembers = localStorage.getItem(storageKeyMembers);
+
+        if (!currentMembers) {
+            currentMembers = 458; // İlk defa giren biri için başlangıç değeri
+        } else {
+            currentMembers = parseInt(currentMembers);
+            // Her sayfa yenilendiğinde rastgele 1 veya 2 kişi ekle
+            var randomIncrease = Math.floor(Math.random() * 2) + 1; 
+            currentMembers += randomIncrease;
+        }
+        localStorage.setItem(storageKeyMembers, currentMembers);
+        document.getElementById('live-member-count').innerText = currentMembers;
+
+
+        // --- YENİLENMEYEN GERİ SAYIM SAYACI SİSTEMİ ---
+        var storageKeyTimer = 'asli_timer_end_time';
+        var endTime = localStorage.getItem(storageKeyTimer);
+
+        if (!endTime) {
+            // Eğer daha önce kaydedilmediyse şu andan itibaren 2 saat 14 dakika 55 saniye sonrasını hedef seç
+            var durationInSeconds = 2 * 60 * 60 + 14 * 60 + 55;
+            endTime = new Date().getTime() + (durationInSeconds * 1000);
+            localStorage.setItem(storageKeyTimer, endTime);
+        } else {
+            endTime = parseInt(endTime);
+        }
+
+        var timerDisplay = document.getElementById('timer');
+        
+        var countdownInterval = setInterval(function () {
+            var now = new Date().getTime();
+            var distance = endTime - now;
+
+            // Süre bittiyse sayacı sıfırla ve yeni bir 2 saatlik periyot başlat
+            if (distance < 0) {
+                var durationInSeconds = 2 * 60 * 60 + 14 * 60 + 55;
+                endTime = new Date().getTime() + (durationInSeconds * 1000);
+                localStorage.setItem(storageKeyTimer, endTime);
+                distance = endTime - now;
+            }
+
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            hours = hours < 10 ? "0" + hours : hours;
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            timerDisplay.textContent = hours + ":" + minutes + ":" + seconds;
+        }, 1000);
+
+
+        // --- HESAPLAMA FONKSİYONU ---
         function hesapla() {
             var s = document.getElementById('tutar');
             var d = document.getElementById('kazanc');
@@ -201,7 +257,7 @@
             d.innerText = toplam.toLocaleString('tr-TR') + " TL";
         }
 
-        // Form Gönderme fonksiyonu
+        // --- FORM GÖNDERME FONKSİYONU ---
         function gonder(e) {
             e.preventDefault();
             var n = document.getElementById('isim').value;
@@ -210,26 +266,7 @@
             alert("Sayın " + n + ", " + t + " TL katılım talebiniz başarıyla alınmıştır.\nTahmini Kazanç: " + k + "\n\nŞimdi lütfen işlemlerinizi tamamlamak için üstteki butonu kullanarak Instagram'dan mesaj atın.");
         }
 
-        // 2 Saatlik Geri Sayım Sayacı Scripti
-        var duration = 2 * 60 * 60 + 14 * 60 + 55; // 02:14:55 saniye cinsinden
-        var timerDisplay = document.getElementById('timer');
-        setInterval(function () {
-            var hours = parseInt(duration / 3600, 10);
-            var minutes = parseInt((duration % 3600) / 60, 10);
-            var seconds = parseInt(duration % 60, 10);
-
-            hours = hours < 10 ? "0" + hours : hours;
-            minutes = minutes < 10 ? "0" + minutes : minutes;
-            seconds = seconds < 10 ? "0" + seconds : seconds;
-
-            timerDisplay.textContent = hours + ":" + minutes + ":" + seconds;
-
-            if (--duration < 0) {
-                duration = 2 * 60 * 60 + 14 * 60 + 55; // Süre bitince sıfırlanıp baştan başlasın
-            }
-        }, 1000);
-
-        // Canlı Bildirim Akışı (Popup) Scripti (Telegram ibareleri kaldırıldı)
+        // --- CANLI BİLDİRİM POPUP AKIŞI ---
         var notifications = [
             "Mehmet A. az önce VIP Gruba katıldı.",
             "Gökhan K. 98.000 TL kazancını başarıyla çekti.",
@@ -244,15 +281,14 @@
 
         function showNextNotification() {
             notifContent.textContent = notifications[notifIndex];
-            notifPopup.style.left = "20px"; // Ekrana giriş yap
+            notifPopup.style.left = "20px";
             
             setTimeout(function() {
-                notifPopup.style.left = "-320px"; // 3 saniye sonra ekrandan çık
+                notifPopup.style.left = "-320px";
                 notifIndex = (notifIndex + 1) % notifications.length;
             }, 3000);
         }
 
-        // İlk bildirimi 3. saniyede başlat, sonra her 7 saniyede bir tekrarla
         setTimeout(function() {
             showNextNotification();
             setInterval(showNextNotification, 7000);
